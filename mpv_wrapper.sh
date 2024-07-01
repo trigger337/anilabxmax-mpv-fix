@@ -87,8 +87,8 @@ fi
 # Get the absolute path to the script directory
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# Determine the name of the actual program by finding the first executable file in the directory
-PROGRAM_NAME=$(find "$SCRIPT_DIR" -maxdepth 1 -type f -executable ! -name "$(basename "$0")" -exec basename {} \; | head -n 1)
+# Determine the name of the actual program by finding the executable file ending in _linux64 in the directory
+PROGRAM_NAME=$(find "$SCRIPT_DIR" -maxdepth 1 -type f -executable -name '*_linux64' -exec basename {} \; | head -n 1)
 
 # Exit if no executable program is found
 if [[ -z "$PROGRAM_NAME" ]]; then
